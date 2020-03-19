@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Simple 360 degree image viewer</title>
+    <script type="text/javascript" src="scripts/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="scripts/dopelessRotate.min.js"></script>
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+</head>
+<body>
+
+<div class='dopelessrotate'>
+	<img id='rotateimage' src='frames/normal/1.jpg' width='400' height='300'>
+	<a class='sethotspot' href='8' title='View #8' posix='65' posiy='74'>Sample View #8</a>
+	<a class='sethotspot' href='1' title='View #1' posix='23' posiy='60'>Sample View #1</a>
+	<a class='sethotspot' href='22' title='View #22' posix='69' posiy='60'>Sample View #22</a>
+</div>
+
+<div style="clear:both"></div>
+
+<script>
+    $(document).ready(function() {
+		if (typeof ieHack == 'undefined')
+			ieHack='';
+		var img='';
+		var imgZoom='';
+		for(var i=24;i>0;i--){
+			img+='./frames/normal/'+i+'.jpg'+ieHack+(i==1?'':',');
+			imgZoom+='./frames/zoom/'+i+'.jpg'+ieHack+(i==1?'':',');
+		}
+        $('#rotateimage').tsRotate({
+			'hotspots':true,
+			'hotspotsTitle':'Views',
+			'nophp':true,
+			'nophpimglist':img,
+			'nophpzoomlist':imgZoom,
+			'autorotate' : true,
+			'wheelRotate' : true,
+			'rotateloop' : false,
+			'autorotatespeed' : 100
+        });
+    });
+</script>
+      
+</body>
+</html>
